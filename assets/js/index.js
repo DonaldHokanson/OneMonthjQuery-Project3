@@ -6,11 +6,16 @@ var main=function(){
 		event.preventDefault();
 		
 		var item = $('#todo-list-item').val();
-
+		var easterEgg = "TFK";
+		
 		if (item) {
 			$('#list-items').append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>X</a><hr></li>");
 			localStorage.setItem('listItems', $('#list-items').html());
 			$('#todo-list-item').val("");		
+		}
+
+		if (item == easterEgg) {
+			$('.easterEgg').css('display', 'block');
 		}
 	});
 };
@@ -31,7 +36,7 @@ $(document).on('change', '.checkbox', function(){
 });
 
 $(document).on('click', '.remove', function(){
-	$(this).parent().fadeOut('slow', function(){
+	$(this).parent().fadeOut('fast', function(){
 		$(this).remove();
 		localStorage.setItem('listItems', $('#list-items').html());
 	});
